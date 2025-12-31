@@ -15,8 +15,8 @@ import {
   ApiResponse as SwaggerResponse,
   ApiTags,
 } from '@nestjs/swagger';
-import { JwtAuthGuard } from 'src/users/auth/guard/jwt/jwt-auth.guard';
-import { updateUserStatusDto } from 'src/users/auth/dto/update-status.dto';
+import { JwtAuthGuard } from '../users/auth/guard/jwt/jwt-auth.guard';
+import { updateUserStatusDto } from '../users/auth/dto/update-status.dto';
 
 interface AuthenticatedRequest extends Request {
   user: {

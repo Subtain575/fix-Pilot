@@ -6,12 +6,12 @@ import {
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { User } from 'src/users/auth/entity/users.entity';
-import { UserRole } from 'src/users/auth/enums/enum';
-import { UserStatus } from 'src/users/auth/enums/status-enum';
-import { Booking } from 'src/bookings/entities/booking.entity';
-import { GigFavourite } from 'src/gigs/entities/gig-favourite.entity';
-import { Review } from 'src/reviews/entities/review.entity';
+import { User } from '../users/auth/entity/users.entity';
+import { UserRole } from '../users/auth/enums/enum';
+import { UserStatus } from '../users/auth/enums/status-enum';
+import { Booking } from '../bookings/entities/booking.entity';
+import { GigFavourite } from '../gigs/entities/gig-favourite.entity';
+import { Review } from '../reviews/entities/review.entity';
 
 @Injectable()
 export class CustomerService {
