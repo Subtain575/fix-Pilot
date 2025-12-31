@@ -1,0 +1,144 @@
+name: Deploy to VPS
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Run tests
+      run: npm run test
+    
+    - name: Run e2e tests
+      run: npm run test:e2e
+
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Use Node.js 20.x
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20.x
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Build application
+      run: npm run build
+    
+    - name: Create deployment package
+      run: |
+        mkdir -p deploy
+        cp -r dist deploy/
+        cp package*.json deploy/
+        cp -r scripts deploy/ || true
+        tar -czf deploy.tar.gz -C deploy .
+    
+    - name: Upload deployment package
+      uses: actions/upload-artifact@v4
+      with:
+        name: deployment-package
+        path: deploy.tar.gz
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Download deployment package
+      uses: actions/download-artifact@v4
+      with:
+        name: deployment-package
+    
+    - name: Deploy to VPS
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.VPS_HOST }}
+        username: ${{ secrets.VPS_USERNAME }}
+        key: ${{ secrets.VPS_SSH_KEY }}
+        port: ${{ secrets.VPS_PORT || 22 }}
+        script: |
+          # Create application directory if it doesn't exist
+          mkdir -p /var/www/service-backend-app
+          cd /var/www/service-backend-app
+          
+          # Stop the application if running
+          pm2 stop service-backend-app || true
+          
+          # Backup current deployment
+          if [ -d "current" ]; then
+            mv current backup-$(date +%Y%m%d-%H%M%S) || true
+          fi
+          
+          # Create new deployment directory
+          mkdir -p current
+    
+    - name: Copy files to VPS
+      uses: appleboy/scp-action@v0.1.7
+      with:
+        host: ${{ secrets.VPS_HOST }}
+        username: ${{ secrets.VPS_USERNAME }}
+        key: ${{ secrets.VPS_SSH_KEY }}
+        port: ${{ secrets.VPS_PORT || 22 }}
+        source: "deploy.tar.gz"
+        target: "/var/www/service-backend-app/"
+    
+    - name: Extract and setup application
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.VPS_HOST }}
+        username: ${{ secrets.VPS_USERNAME }}
+        key: ${{ secrets.VPS_SSH_KEY }}
+        port: ${{ secrets.VPS_PORT || 22 }}
+        script: |
+          cd /var/www/service-backend-app
+          
+          # Extract deployment package
+          tar -xzf deploy.tar.gz -C current/
+          rm deploy.tar.gz
+          
+          # Copy environment file
+          cp .env current/.env || echo "Warning: .env file not found"
+          
+          # Install production dependencies
+          cd current
+          npm ci --only=production
+          
+          # Start application with PM2
+          pm2 start ecosystem.config.js || pm2 restart service-backend-app
+          
+          # Save PM2 configuration
+          pm2 save
+          
+          # Clean up old backups (keep last 3)
+          cd /var/www/service-backend-app
+          ls -t | grep backup- | tail -n +4 | xargs rm -rf || true
