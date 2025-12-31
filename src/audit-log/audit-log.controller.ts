@@ -1,9 +1,17 @@
-import { Controller, Get, Post, Body, Param, UseGuards, Query } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Param,
+  UseGuards,
+  Query,
+} from '@nestjs/common';
 import { AuditLogService } from './audit-log.service';
-import { JwtAuthGuard } from 'src/users/auth/guard/jwt/jwt-auth.guard';
-import { RolesGuard } from 'src/users/auth/guard/role/roles.guard';
-import { Roles } from 'src/users/auth/guard/role/roles.decorator';
-import { UserRole } from 'src/users/auth/enums/enum';
+import { JwtAuthGuard } from '../users/auth/guard/jwt/jwt-auth.guard';
+import { RolesGuard } from '../users/auth/guard/role/roles.guard';
+import { Roles } from '../users/auth/guard/role/roles.decorator';
+import { UserRole } from '../users/auth/enums/enum';
 import { ApiBearerAuth, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { GetAuditLogDto } from './dto/audit-log.dto';
 
@@ -35,7 +43,7 @@ export class AuditLogController {
     description: 'Audit log retrieved successfully',
   })
   @ApiResponse({ status: 401, description: 'Unauthorized' })
-  getAllByAdmin(@Param('adminId') adminId: string ) {
+  getAllByAdmin(@Param('adminId') adminId: string) {
     return this.auditLogService.getAllByAdmin(adminId);
   }
 }

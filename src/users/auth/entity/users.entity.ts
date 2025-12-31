@@ -13,9 +13,9 @@ import { IsOptional } from 'class-validator';
 import { UserStatus } from '../enums/status-enum';
 import { Booking } from '../../../bookings/entities/booking.entity';
 import { SellerFile } from './seller-file.entity';
-import { Seller } from 'src/seller/entities/seller.entity';
-import { Notification } from 'src/notification/entities/notification.entity';
-import { messageSafety } from 'src/message-safety/entities/message-safety.entity';
+import { Seller } from '../../../seller/entities/seller.entity';
+import { Notification } from '../../../notification/entities/notification.entity';
+import { messageSafety } from '../../../message-safety/entities/message-safety.entity';
 
 @Entity('users')
 export class User {

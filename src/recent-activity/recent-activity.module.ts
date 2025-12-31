@@ -4,9 +4,9 @@ import { RecentActivityController } from './recent-activity.controller';
 import { RecentActivityService } from './recent-activity.service';
 import { Booking } from '../bookings/entities/booking.entity';
 import { Gig } from '../gigs/entities/gig.entity';
-import { User } from 'src/users/auth/entity/users.entity';
-import { Seller } from 'src/seller/entities/seller.entity';
-import { Category } from 'src/categories/entities/category.entity';
+import { User } from '../users/auth/entity/users.entity';
+import { Seller } from '../seller/entities/seller.entity';
+import { Category } from '../categories/entities/category.entity';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Booking, Gig, User, Seller, Category])],

@@ -7,13 +7,13 @@ import { CreateStrikeDto } from './dto/create-strike.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Strike } from './entities/strike.entity';
 import { Repository } from 'typeorm';
-import { Seller } from 'src/seller/entities/seller.entity';
+import { Seller } from '../seller/entities/seller.entity';
 import { StrikeQueryDto } from './dto/strike-query.dto';
-import { User } from 'src/users/auth/entity/users.entity';
-import { NotificationService } from 'src/notification/notification.service';
-import { CreateNotificationDto } from 'src/notification/dto/create-notification.dto';
-import { AuditLogService } from 'src/audit-log/audit-log.service';
-import { CreateAuditLogDto } from 'src/audit-log/dto/create-audit-log.dto';
+import { User } from '../users/auth/entity/users.entity';
+import { NotificationService } from '../notification/notification.service';
+import { CreateNotificationDto } from '../notification/dto/create-notification.dto';
+import { AuditLogService } from '../audit-log/audit-log.service';
+import { CreateAuditLogDto } from '../audit-log/dto/create-audit-log.dto';
 
 @Injectable()
 export class StrikeService {

@@ -4,15 +4,15 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Booking, BookingStatus } from 'src/bookings/entities/booking.entity';
-import { Category } from 'src/categories/entities/category.entity';
-import { Gig } from 'src/gigs/entities/gig.entity';
-import { Seller } from 'src/seller/entities/seller.entity';
-import { SellerVerificationStatus } from 'src/seller/Enum/seller-verification-enum';
-import { Strike } from 'src/strike/entities/strike.entity';
-import { User } from 'src/users/auth/entity/users.entity';
-import { UserRole } from 'src/users/auth/enums/enum';
-import { UserStatus } from 'src/users/auth/enums/status-enum';
+import { Booking, BookingStatus } from '../bookings/entities/booking.entity';
+import { Category } from '../categories/entities/category.entity';
+import { Gig } from '../gigs/entities/gig.entity';
+import { Seller } from '../seller/entities/seller.entity';
+import { SellerVerificationStatus } from '../seller/Enum/seller-verification-enum';
+import { Strike } from '../strike/entities/strike.entity';
+import { User } from '../users/auth/entity/users.entity';
+import { UserRole } from '../users/auth/enums/enum';
+import { UserStatus } from '../users/auth/enums/status-enum';
 import { Repository } from 'typeorm';
 
 @Injectable()

@@ -20,9 +20,9 @@ import { User } from '../users/auth/entity/users.entity';
 import { UserRole } from '../users/auth/enums/enum';
 import { ApiResponse } from '../common/utils/response.util';
 import { CloudinaryService } from '../cloudinary/cloudinary.service';
-import { Seller } from 'src/seller/entities/seller.entity';
-import { SellerVerificationStatus } from 'src/seller/Enum/seller-verification-enum';
-import { UserStatus } from 'src/users/auth/enums/status-enum';
+import { Seller } from '../seller/entities/seller.entity';
+import { SellerVerificationStatus } from '../seller/Enum/seller-verification-enum';
+import { UserStatus } from '../users/auth/enums/status-enum';
 
 type SortBy = {
   priceFrom: 'ASC' | 'DESC';

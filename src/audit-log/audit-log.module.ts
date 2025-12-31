@@ -3,7 +3,7 @@ import { AuditLogService } from './audit-log.service';
 import { AuditLogController } from './audit-log.controller';
 import { AuditLog } from './entities/audit-log.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AuthModule } from 'src/users/auth/auth.module';
+import { AuthModule } from '../users/auth/auth.module';
 
 @Module({
   imports: [TypeOrmModule.forFeature([AuditLog]), AuthModule],

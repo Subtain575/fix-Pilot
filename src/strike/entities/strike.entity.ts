@@ -1,4 +1,4 @@
-import { Seller } from 'src/seller/entities/seller.entity';
+import { Seller } from '../../seller/entities/seller.entity';
 
 import {
   Column,

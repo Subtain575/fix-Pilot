@@ -10,7 +10,7 @@ import { Booking } from '../bookings/entities/booking.entity';
 import { Review } from '../reviews/entities/review.entity';
 import { User } from '../users/auth/entity/users.entity';
 import { CloudinaryModule } from '../cloudinary/cloudinary.module';
-import { Seller } from 'src/seller/entities/seller.entity';
+import { Seller } from '../seller/entities/seller.entity';
 @Module({
   imports: [
     TypeOrmModule.forFeature([

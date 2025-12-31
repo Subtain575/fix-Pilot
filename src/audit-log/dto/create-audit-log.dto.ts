@@ -1,4 +1,4 @@
-import { User } from 'src/users/auth/entity/users.entity';
+import { User } from '../../users/auth/entity/users.entity';
 
 export class CreateAuditLogDto {
   admin: User;

@@ -9,13 +9,13 @@ import { JwtStrategy } from './guard/jwt/jwt.strategy';
 import { CloudinaryModule } from '../../cloudinary/cloudinary.module';
 import { CommonModule } from '../../common/common.module';
 import { MailModule } from '../../email/mail.module';
-import { PhoneModule } from 'src/phone-number/phone-number.module';
+import { PhoneModule } from '../../phone-number/phone-number.module';
 import { SellerFile } from './entity/seller-file.entity';
-import { Seller } from 'src/seller/entities/seller.entity';
-import { NotificationModule } from 'src/notification/notification.module';
-import { BookingsModule } from 'src/bookings/bookings.module';
+import { Seller } from '../../seller/entities/seller.entity';
+import { NotificationModule } from '../../notification/notification.module';
+import { BookingsModule } from '../../bookings/bookings.module';
 import { GigFavourite } from '../../gigs/entities/gig-favourite.entity';
-import { messageSafety } from 'src/message-safety/entities/message-safety.entity';
+import { messageSafety } from '../../message-safety/entities/message-safety.entity';
 import { Booking } from '../../bookings/entities/booking.entity';
 import { Gig } from '../../gigs/entities/gig.entity';
 

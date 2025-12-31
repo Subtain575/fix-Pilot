@@ -25,10 +25,10 @@ import {
   BookingImageType,
 } from './entities/booking-image.entity';
 import { JobCompleteDto } from './dto/job-complete.dto';
-import { User } from 'src/users/auth/entity/users.entity';
-import { NotificationService } from 'src/notification/notification.service';
-import { CreateNotificationDto } from 'src/notification/dto/create-notification.dto';
-import { GigsService } from 'src/gigs/gigs.service';
+import { User } from '../users/auth/entity/users.entity';
+import { NotificationService } from '../notification/notification.service';
+import { CreateNotificationDto } from '../notification/dto/create-notification.dto';
+import { GigsService } from '../gigs/gigs.service';
 import {
   DayOfWeek,
   GigAvailability,
@@ -36,11 +36,11 @@ import {
 import { Gig } from '../gigs/entities/gig.entity';
 import { GetAvailableHoursDto } from './dto/get-available-hours.dto';
 import { BookingArriveDto } from './dto/booking-arrive.dto';
-import { SellerVerificationStatus } from 'src/seller/Enum/seller-verification-enum';
-import { Seller } from 'src/seller/entities/seller.entity';
-import { UserStatus } from 'src/users/auth/enums/status-enum';
-import { UserRole } from 'src/users/auth/enums/enum';
-import { AddressesService } from 'src/addresses/addresses.service';
+import { SellerVerificationStatus } from '../seller/Enum/seller-verification-enum';
+import { Seller } from '../seller/entities/seller.entity';
+import { UserStatus } from '../users/auth/enums/status-enum';
+import { UserRole } from '../users/auth/enums/enum';
+import { AddressesService } from '../addresses/addresses.service';
 
 @Injectable()
 export class BookingsService {

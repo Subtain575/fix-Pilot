@@ -7,7 +7,7 @@ import {
   ApiResponse as SwaggerResponse,
   ApiTags,
 } from '@nestjs/swagger';
-import { JwtAuthGuard } from 'src/users/auth/guard/jwt/jwt-auth.guard';
+import { JwtAuthGuard } from '../users/auth/guard/jwt/jwt-auth.guard';
 
 @ApiTags('Support')
 @Controller('support')

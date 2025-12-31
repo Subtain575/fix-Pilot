@@ -1,11 +1,11 @@
 import { Controller, Get, Param, Req, UseGuards } from '@nestjs/common';
 import { RecentActivityService } from './recent-activity.service';
-import { JwtAuthGuard } from 'src/users/auth/guard/jwt/jwt-auth.guard';
-import { Roles } from 'src/users/auth/guard/role/roles.decorator';
-import { UserRole } from 'src/users/auth/enums/enum';
+import { JwtAuthGuard } from '../users/auth/guard/jwt/jwt-auth.guard';
+import { Roles } from '../users/auth/guard/role/roles.decorator';
+import { UserRole } from '../users/auth/enums/enum';
 import { ApiBearerAuth } from '@nestjs/swagger';
-import { User } from 'src/users/auth/entity/users.entity';
-import { RolesGuard } from 'src/users/auth/guard/role/roles.guard';
+import { User } from '../users/auth/entity/users.entity';
+import { RolesGuard } from '../users/auth/guard/role/roles.guard';
 
 @Controller('recent-activity')
 export class RecentActivityController {

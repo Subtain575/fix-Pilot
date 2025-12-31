@@ -13,13 +13,13 @@ import { NotificationService } from './notification.service';
 import { NotificationQueryDto } from './dto/notification-query.dto';
 import { ApiBearerAuth, ApiOperation } from '@nestjs/swagger';
 import { ApiResponse as SwaggerResponse } from '@nestjs/swagger';
-import { JwtAuthGuard } from 'src/users/auth/guard/jwt/jwt-auth.guard';
+import { JwtAuthGuard } from '../users/auth/guard/jwt/jwt-auth.guard';
 import { receiverNotificationQueryDto } from './dto/receiver-query,dto';
-import { User } from 'src/users/auth/entity/users.entity';
-import { RolesGuard } from 'src/users/auth/guard/role/roles.guard';
-import { UserRole } from 'src/users/auth/enums/enum';
+import { User } from '../users/auth/entity/users.entity';
+import { RolesGuard } from '../users/auth/guard/role/roles.guard';
+import { UserRole } from '../users/auth/enums/enum';
 import { SendNotificationDto } from './dto/send-notification.dto';
-import { Roles } from 'src/users/auth/guard/role/roles.decorator';
+import { Roles } from '../users/auth/guard/role/roles.decorator';
 
 interface AuthenticatedRequest extends Request {
   user: User;

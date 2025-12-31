@@ -14,11 +14,11 @@ import { FilterViolationsDto } from './dto/message-query.dto';
 import { ViolationActionDto } from './dto/action-message.dto';
 import { ApiBearerAuth, ApiOperation } from '@nestjs/swagger';
 import { ApiResponse as SwaggerResponse } from '@nestjs/swagger';
-import { JwtAuthGuard } from 'src/users/auth/guard/jwt/jwt-auth.guard';
-import { UserRole } from 'src/users/auth/enums/enum';
-import { Roles } from 'src/users/auth/guard/role/roles.decorator';
+import { JwtAuthGuard } from '../users/auth/guard/jwt/jwt-auth.guard';
+import { UserRole } from '../users/auth/enums/enum';
+import { Roles } from '../users/auth/guard/role/roles.decorator';
 import { UpdateStatusDto } from './dto/update-status.dto';
-import { RolesGuard } from 'src/users/auth/guard/role/roles.guard';
+import { RolesGuard } from '../users/auth/guard/role/roles.guard';
 @Controller('message-safety')
 export class MessageSafetyController {
   constructor(private readonly messageService: MessageSafetyService) {}

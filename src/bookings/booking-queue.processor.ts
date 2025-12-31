@@ -4,9 +4,9 @@ import { Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Booking, BookingStatus } from './entities/booking.entity';
-import { NotificationService } from 'src/notification/notification.service';
-import { CreateNotificationDto } from 'src/notification/dto/create-notification.dto';
-import { User } from 'src/users/auth/entity/users.entity';
+import { NotificationService } from '../notification/notification.service';
+import { CreateNotificationDto } from '../notification/dto/create-notification.dto';
+import { User } from '../users/auth/entity/users.entity';
 
 export interface BookingExpiryJob {
   bookingId: string;

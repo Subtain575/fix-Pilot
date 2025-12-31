@@ -11,8 +11,8 @@ import { CreateNotificationDto } from './dto/create-notification.dto';
 import { NotificationQueryDto } from './dto/notification-query.dto';
 import { receiverNotificationQueryDto } from './dto/receiver-query,dto';
 import { SendNotificationDto } from './dto/send-notification.dto';
-import { User } from 'src/users/auth/entity/users.entity';
-import { UserRole } from 'src/users/auth/enums/enum';
+import { User } from '../users/auth/entity/users.entity';
+import { UserRole } from '../users/auth/enums/enum';
 import { NotificationTargetEnum } from './Enum/notification-enum';
 
 @Injectable()

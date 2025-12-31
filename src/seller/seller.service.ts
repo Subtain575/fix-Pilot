@@ -7,7 +7,7 @@ import {
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository, In, Not, IsNull } from 'typeorm';
 import { Seller } from './entities/seller.entity';
-import { User } from 'src/users/auth/entity/users.entity';
+import { User } from '../users/auth/entity/users.entity';
 import { SellerVerificationDto } from './dto/seller-verification-dto';
 import { SellerVerificationQueryDto } from './dto/seller-verification-query-dto';
 import { sellerCoachingDto } from './dto/seller-coaching.dto';
@@ -15,11 +15,11 @@ import { Booking, BookingStatus } from '../bookings/entities/booking.entity';
 import { Review } from '../reviews/entities/review.entity';
 import { Gig } from '../gigs/entities/gig.entity';
 import { ApiResponse } from '../common/utils/response.util';
-import { NotificationService } from 'src/notification/notification.service';
+import { NotificationService } from '../notification/notification.service';
 import { CreateFollowUpDto } from './dto/seller-followUp.dto';
-import { CreateNotificationDto } from 'src/notification/dto/create-notification.dto';
-import { CreateAuditLogDto } from 'src/audit-log/dto/create-audit-log.dto';
-import { AuditLogService } from 'src/audit-log/audit-log.service';
+import { CreateNotificationDto } from '../notification/dto/create-notification.dto';
+import { CreateAuditLogDto } from '../audit-log/dto/create-audit-log.dto';
+import { AuditLogService } from '../audit-log/audit-log.service';
 @Injectable()
 export class SellerService {
   private readonly logger = new Logger(SellerService.name);

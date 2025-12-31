@@ -9,11 +9,11 @@ import { GigAvailability } from '../gigs/entities/gig-availability.entity';
 import { Gig } from '../gigs/entities/gig.entity';
 import { CloudinaryModule } from '../cloudinary/cloudinary.module';
 import { CommonModule } from '../common/common.module';
-import { NotificationModule } from 'src/notification/notification.module';
-import { User } from 'src/users/auth/entity/users.entity';
-import { GigsModule } from 'src/gigs/gigs.module';
-import { Seller } from 'src/seller/entities/seller.entity';
-import { AddressesModule } from 'src/addresses/addresses.module';
+import { NotificationModule } from '../notification/notification.module';
+import { User } from '../users/auth/entity/users.entity';
+import { GigsModule } from '../gigs/gigs.module';
+import { Seller } from '../seller/entities/seller.entity';
+import { AddressesModule } from '../addresses/addresses.module';
 import { BookingExpiryProcessor } from './booking-queue.processor';
 
 @Module({

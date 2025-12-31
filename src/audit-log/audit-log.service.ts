@@ -3,8 +3,8 @@ import { CreateAuditLogDto } from './dto/create-audit-log.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { AuditLog } from './entities/audit-log.entity';
 import { Repository } from 'typeorm';
-import { AuthService } from 'src/users/auth/auth.service';
-import { UserRole } from 'src/users/auth/enums/enum';
+import { AuthService } from '../users/auth/auth.service';
+import { UserRole } from '../users/auth/enums/enum';
 import { GetAuditLogDto } from './dto/audit-log.dto';
 
 @Injectable()
@@ -22,13 +22,13 @@ export class AuditLogService {
   async getAll(dto: GetAuditLogDto) {
     const page = dto.page ?? 1;
     const limit = dto.limit ?? 10;
-  
+
     const [data, total] = await this.auditLogRepo.findAndCount({
       skip: (page - 1) * limit,
       take: limit,
       order: { createdAt: 'DESC' },
     });
-  
+
     return {
       data,
       meta: {
@@ -39,7 +39,6 @@ export class AuditLogService {
       },
     };
   }
-
 
   async getAllByAdmin(adminId: string) {
     const admin = await this.authService.findUserById(adminId);

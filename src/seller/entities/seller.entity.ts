@@ -9,8 +9,8 @@ import {
   JoinColumn,
 } from 'typeorm';
 import { SellerVerificationStatus } from '../Enum/seller-verification-enum';
-import { User } from 'src/users/auth/entity/users.entity';
-import { Strike } from 'src/strike/entities/strike.entity';
+import { User } from '../../users/auth/entity/users.entity';
+import { Strike } from '../../strike/entities/strike.entity';
 
 @Entity('sellers')
 export class Seller {

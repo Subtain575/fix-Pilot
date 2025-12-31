@@ -7,7 +7,7 @@ import {
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
-import { User } from 'src/users/auth/entity/users.entity';
+import { User } from '../users/auth/entity/users.entity';
 import { CreateViolationDto } from './dto/create-message-safety.dto';
 import { FilterViolationsDto } from './dto/message-query.dto';
 import { ViolationActionDto } from './dto/action-message.dto';

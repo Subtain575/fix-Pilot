@@ -3,10 +3,10 @@ import { StrikeService } from './strike.service';
 import { StrikeController } from './strike.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Strike } from './entities/strike.entity';
-import { Seller } from 'src/seller/entities/seller.entity';
-import { User } from 'src/users/auth/entity/users.entity';
-import { NotificationModule } from 'src/notification/notification.module';
-import { AuditLogModule } from 'src/audit-log/audit-log.module';
+import { Seller } from '../seller/entities/seller.entity';
+import { User } from '../users/auth/entity/users.entity';
+import { NotificationModule } from '../notification/notification.module';
+import { AuditLogModule } from '../audit-log/audit-log.module';
 
 @Module({
   imports: [
